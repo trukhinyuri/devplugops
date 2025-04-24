@@ -1,0 +1,143 @@
+# Default values for the API chart
+# This is a YAML-formatted file.
+
+# Global settings
+global:
+  environment: dev # dev, staging, prod
+
+# Image settings
+image:
+  repository: api
+  tag: latest # Will be overridden in CI/CD pipeline
+  pullPolicy: IfNotPresent
+
+# Environment-specific configurations
+environments:
+  dev:
+    replicaCount: 1
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    hpa:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 3
+      targetCPUUtilizationPercentage: 80
+      targetMemoryUtilizationPercentage: 80
+    ingress:
+      enabled: true
+      host: api-dev.example.com
+      annotations:
+        kubernetes.io/ingress.class: nginx
+    serviceMonitor:
+      enabled: true
+      interval: 30s
+    logLevel: debug
+
+  staging:
+    replicaCount: 2
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    hpa:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 5
+      targetCPUUtilizationPercentage: 70
+      targetMemoryUtilizationPercentage: 70
+    ingress:
+      enabled: true
+      host: api-staging.example.com
+      annotations:
+        kubernetes.io/ingress.class: nginx
+    serviceMonitor:
+      enabled: true
+      interval: 15s
+    logLevel: info
+
+  prod:
+    replicaCount: 3
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
+    hpa:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 60
+      targetMemoryUtilizationPercentage: 60
+    ingress:
+      enabled: true
+      host: api.example.com
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+    serviceMonitor:
+      enabled: true
+      interval: 10s
+    logLevel: info
+
+# Service settings
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+# Pod settings
+podAnnotations: {}
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+# Liveness and readiness probes
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: http
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /ping
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# Observability
+metrics:
+  enabled: true
+  path: /metrics
+  port: http
+
+# Log shipping sidecar
+logShipping:
+  enabled: true
+  image: fluent/fluent-bit:1.9
+  configMap:
+    name: fluent-bit-config

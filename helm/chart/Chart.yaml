@@ -1,0 +1,30 @@
+apiVersion: v2
+name: api
+description: A Helm chart for the DevOpsPlus API
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+
+# Maintainers
+maintainers:
+  - name: DevOpsPlus Team
+    email: devops@example.com
+
+# Keywords
+keywords:
+  - api
+  - golang
+  - devops
+
+# Home URL
+home: https://github.com/jetbrains/devopsplus
+
+# Sources
+sources:
+  - https://github.com/jetbrains/devopsplus
+
+# Icon
+icon: https://raw.githubusercontent.com/jetbrains/devopsplus/main/assets/logo.png
+
+# Dependencies
+dependencies: []
