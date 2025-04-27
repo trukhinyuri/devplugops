@@ -1,0 +1,90 @@
+name: Critical Service Mesh Infrastructure Failures
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  service-mesh-connectivity:
+    name: Service Mesh Connectivity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Connectivity
+        run: |
+          echo "::error::CRITICAL: Service mesh control plane completely unresponsive across all clusters!"
+          echo "::error::CRITICAL: 100% of service-to-service communication failing - complete system isolation!"
+          echo "::error::CRITICAL: Service discovery mechanism returning incorrect endpoints for all services!"
+          exit 1
+          
+  service-mesh-security:
+    name: Service Mesh Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Security
+        run: |
+          echo "::error::CRITICAL: mTLS certificates expired for all services - zero encrypted communication!"
+          echo "::error::CRITICAL: Service mesh authorization policies completely bypassed - zero access control!"
+          echo "::error::CRITICAL: Root certificate compromise detected - all service communication potentially intercepted!"
+          exit 1
+          
+  service-mesh-observability:
+    name: Service Mesh Observability
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Observability
+        run: |
+          echo "::error::CRITICAL: Tracing infrastructure collapsed - 0% of transactions traceable across services!"
+          echo "::error::CRITICAL: Metrics collection completely failed - all service mesh dashboards blind!"
+          echo "::error::CRITICAL: Service mesh logging infrastructure overwhelmed - dropping 99.7% of log entries!"
+          exit 1
+          
+  service-mesh-routing:
+    name: Service Mesh Traffic Routing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Traffic Routing
+        run: |
+          echo "::error::CRITICAL: Traffic splitting sending 100% of requests to failed services!"
+          echo "::error::CRITICAL: Circuit breakers disabled for all services - cascading failures imminent!"
+          echo "::error::CRITICAL: Rate limiting configuration error allowing unlimited requests to critical services!"
+          exit 1
+          
+  service-mesh-configuration:
+    name: Service Mesh Configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Configuration
+        run: |
+          echo "::error::CRITICAL: Service mesh configuration validation completely bypassed!"
+          echo "::error::CRITICAL: Conflicting ingress gateway configurations causing 100% of external traffic to be dropped!"
+          echo "::error::CRITICAL: Service mesh sidecar injection failing for all new pods - mesh expansion impossible!"
+          exit 1
+          
+  service-mesh-performance:
+    name: Service Mesh Performance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Performance
+        run: |
+          echo "::error::CRITICAL: Service mesh proxies consuming 95% of all cluster CPU resources!"
+          echo "::error::CRITICAL: Request latency increased by 12,000% due to service mesh misconfiguration!"
+          echo "::error::CRITICAL: Memory leak in service mesh proxies causing pod evictions every 7 minutes!"
+          exit 1

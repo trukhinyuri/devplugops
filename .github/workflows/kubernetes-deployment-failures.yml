@@ -1,0 +1,107 @@
+name: Critical Kubernetes Deployment Failures
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  cluster-health:
+    name: Kubernetes Cluster Health
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Cluster Health
+        run: |
+          echo "::error::CRITICAL: Kubernetes API server unresponsive across all production clusters!"
+          echo "::error::CRITICAL: etcd quorum lost - cluster state completely unavailable!"
+          echo "::error::CRITICAL: Control plane components failing on all master nodes!"
+          exit 1
+          
+  deployment-validation:
+    name: Deployment Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+        
+      - name: Validate Deployment
+        run: |
+          echo "::error::CRITICAL: Helm chart contains fatal errors - deployment completely impossible!"
+          echo "::error::CRITICAL: Resource definitions would delete all existing production workloads!"
+          echo "::error::CRITICAL: Invalid CRD references will cause cluster-wide operator failures!"
+          exit 1
+          
+  resource-availability:
+    name: Resource Availability
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Resources
+        run: |
+          echo "::error::CRITICAL: All production nodes at 100% CPU utilization - no scheduling possible!"
+          echo "::error::CRITICAL: Memory exhaustion on all nodes - OOMKilling critical system pods!"
+          echo "::error::CRITICAL: Persistent volume provisioning failed - all stateful workloads unable to start!"
+          exit 1
+          
+  network-policies:
+    name: Network Policies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Network Policies
+        run: |
+          echo "::error::CRITICAL: Network policies blocking all pod-to-pod communication!"
+          echo "::error::CRITICAL: CNI plugin failure - complete network outage across all namespaces!"
+          echo "::error::CRITICAL: Ingress controllers failing to route any external traffic to services!"
+          exit 1
+          
+  security-context:
+    name: Security Context
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Security Context
+        run: |
+          echo "::error::CRITICAL: Pod Security Policies blocking all deployments in production namespaces!"
+          echo "::error::CRITICAL: Container security contexts allowing privileged execution in all pods!"
+          echo "::error::CRITICAL: Service accounts with excessive permissions deployed to all namespaces!"
+          exit 1
+          
+  autoscaling:
+    name: Autoscaling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Autoscaling
+        run: |
+          echo "::error::CRITICAL: Horizontal Pod Autoscaler misconfigured - scaling to 0 replicas for all services!"
+          echo "::error::CRITICAL: Cluster Autoscaler failing to provision new nodes despite 100% resource utilization!"
+          echo "::error::CRITICAL: Vertical Pod Autoscaler reducing resource limits below functional minimums!"
+          exit 1
+          
+  service-disruption:
+    name: Service Disruption
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check Service Disruption
+        run: |
+          echo "::error::CRITICAL: Pod Disruption Budgets ignored - entire services taken offline during rolling update!"
+          echo "::error::CRITICAL: Readiness probes failing for 100% of pods - no traffic being routed to applications!"
+          echo "::error::CRITICAL: Liveness probe misconfiguration causing infinite restart loops for all pods!"
+          exit 1

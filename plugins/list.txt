@@ -1,0 +1,235 @@
+# JetBrains Plugins for Developers and DevOps/SRE/Platform Engineers
+
+## Plan
+- Jira Integration: Connect your IDE with Jira for seamless issue tracking and project management.
+  Link: https://plugins.jetbrains.com/plugin/10296-jira-integration
+- GitLab Projects: Manage GitLab projects, issues, and merge requests directly from your IDE.
+  Link: https://plugins.jetbrains.com/plugin/7975-gitlab-projects
+- GitHub: Integrates GitHub pull requests and issues into your IDE workflow.
+  Link: https://plugins.jetbrains.com/plugin/13115-github
+- Trello Integration: Manage Trello cards and boards without leaving your IDE.
+  Link: https://plugins.jetbrains.com/plugin/8171-trello-integration
+- Mermaid: Create diagrams and visualizations using Mermaid syntax.
+  Link: https://plugins.jetbrains.com/plugin/20146-mermaid
+- PlantUML Integration: Create UML diagrams using PlantUML syntax.
+  Link: https://plugins.jetbrains.com/plugin/7017-plantuml-integration
+- YouTrack: Integrate YouTrack issue tracking and project management.
+  Link: https://plugins.jetbrains.com/plugin/8215-youtrack
+
+## Code
+- Tabnine AI: AI-powered code completion for faster development.
+  Link: https://plugins.jetbrains.com/plugin/12798-tabnine-ai-code-completion
+- GitHub Copilot: AI-powered code suggestions based on comments and context.
+  Link: https://plugins.jetbrains.com/plugin/17718-github-copilot
+- GitToolBox: Enhanced Git integration with commit checking and inline blame annotations.
+  Link: https://plugins.jetbrains.com/plugin/7499-gittoolbox
+- SonarLint: Detect and fix quality issues as you write code.
+  Link: https://plugins.jetbrains.com/plugin/7973-sonarlint
+- Rainbow Brackets: Color-codes matching brackets for better code readability.
+  Link: https://plugins.jetbrains.com/plugin/10080-rainbow-brackets
+- Kubernetes: Kubernetes support for editing YAML files with schema validation.
+  Link: https://plugins.jetbrains.com/plugin/10485-kubernetes
+- Terraform: Terraform language support for IntelliJ-based IDEs.
+  Link: https://plugins.jetbrains.com/plugin/7808-terraform
+- Docker: Docker integration for container management.
+  Link: https://plugins.jetbrains.com/plugin/7724-docker
+- AWS Toolkit: Toolkit for working with AWS services.
+  Link: https://plugins.jetbrains.com/plugin/11349-aws-toolkit
+- Azure Toolkit: Tools for working with Microsoft Azure.
+  Link: https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
+- Key Promoter X: Learn keyboard shortcuts as you work.
+  Link: https://plugins.jetbrains.com/plugin/9792-key-promoter-x
+- String Manipulation: Provides actions for text manipulation.
+  Link: https://plugins.jetbrains.com/plugin/2162-string-manipulation
+- YAML/Ansible Support: Enhanced YAML editing with Ansible schema validation.
+  Link: https://plugins.jetbrains.com/plugin/7792-yaml
+- Ini: Support for INI configuration files.
+  Link: https://plugins.jetbrains.com/plugin/6981-ini
+- .env files support: Support for environment configuration files.
+  Link: https://plugins.jetbrains.com/plugin/9525--env-files-support
+- BashSupport Pro: Professional Bash script development.
+  Link: https://plugins.jetbrains.com/plugin/13841-bashsupport-pro
+- Perl: Support for Perl scripting language.
+  Link: https://plugins.jetbrains.com/plugin/7796-perl
+- Python: Enhanced Python development for scripting and automation.
+  Link: https://plugins.jetbrains.com/plugin/631-python
+- RegExp Tester: Test and debug regular expressions.
+  Link: https://plugins.jetbrains.com/plugin/2917-regexp-tester
+
+## Build
+- Maven Helper: Simplifies working with Maven projects.
+  Link: https://plugins.jetbrains.com/plugin/7179-maven-helper
+- Gradle View: Enhanced Gradle project view and task execution.
+  Link: https://plugins.jetbrains.com/plugin/7150-gradle-view
+- Makefile Support: Syntax highlighting and run configurations for Makefiles.
+  Link: https://plugins.jetbrains.com/plugin/9333-makefile-support
+- Bazel: Support for Bazel build system.
+  Link: https://plugins.jetbrains.com/plugin/8609-bazel
+- NPM: Enhanced NPM support for JavaScript projects.
+  Link: https://plugins.jetbrains.com/plugin/10229-npm
+- Jenkins Control Plugin: Manage Jenkins jobs from your IDE.
+  Link: https://plugins.jetbrains.com/plugin/6110-jenkins-control-plugin
+- Buildkite Integration: Manage Buildkite pipelines from your IDE.
+  Link: https://plugins.jetbrains.com/plugin/14738-buildkite-integration
+
+## Test
+- JUnit: Enhanced JUnit testing support.
+  Link: https://plugins.jetbrains.com/plugin/10033-junit
+- TestNG: TestNG framework integration.
+  Link: https://plugins.jetbrains.com/plugin/21000-testng-framework
+- Cypress Support: Support for Cypress testing framework.
+  Link: https://plugins.jetbrains.com/plugin/13819-cypress-support
+- Robot Framework Support: Support for Robot Framework testing.
+  Link: https://plugins.jetbrains.com/plugin/7430-robot-framework-support
+- Gauge: Support for Gauge test automation framework.
+  Link: https://plugins.jetbrains.com/plugin/7535-gauge
+- Cucumber: Support for Cucumber BDD testing.
+  Link: https://plugins.jetbrains.com/plugin/7212-cucumber-for-java
+- Selenium UI Testing: Support for Selenium WebDriver testing.
+  Link: https://plugins.jetbrains.com/plugin/13691-selenium-ui-testing
+- Test Management: Organize and manage test cases within your IDE.
+  Link: https://plugins.jetbrains.com/plugin/14708-test-management
+
+## Release
+- Git Flow Integration: Implements Git Flow branching model in your IDE.
+  Link: https://plugins.jetbrains.com/plugin/7315-git-flow-integration
+- Conventional Commit: Helps create conventional commit messages.
+  Link: https://plugins.jetbrains.com/plugin/13389-conventional-commit
+- Semantic Versioning: Helps manage semantic versioning in your projects.
+  Link: https://plugins.jetbrains.com/plugin/18289-semantic-versioning
+- Commitlint: Lint commit messages according to conventional commits.
+  Link: https://plugins.jetbrains.com/plugin/13389-conventional-commit
+- GitLab Workflow: Enhanced GitLab integration for merge requests and CI/CD.
+  Link: https://plugins.jetbrains.com/plugin/7975-gitlab-projects
+- GitHub Actions: Integration with GitHub Actions CI/CD workflows.
+  Link: https://plugins.jetbrains.com/plugin/14337-github-actions
+- Bitbucket Integration: Enhanced Bitbucket integration for pull requests and CI/CD.
+  Link: https://plugins.jetbrains.com/plugin/14631-bitbucket-integration
+
+## Deploy
+- Kubernetes: Full Kubernetes integration for deployment management.
+  Link: https://plugins.jetbrains.com/plugin/10485-kubernetes
+- AWS Toolkit: Deploy applications to AWS services.
+  Link: https://plugins.jetbrains.com/plugin/11349-aws-toolkit
+- Azure Toolkit: Deploy applications to Azure services.
+  Link: https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
+- Google Cloud Tools: Deploy applications to Google Cloud Platform.
+  Link: https://plugins.jetbrains.com/plugin/8079-google-cloud-tools
+- Heroku Integration: Deploy applications to Heroku.
+  Link: https://plugins.jetbrains.com/plugin/7837-heroku-integration
+- Helm: Support for Helm charts for Kubernetes applications.
+  Link: https://plugins.jetbrains.com/plugin/15679-helm
+- ArgoCD Integration: Manage ArgoCD deployments from your IDE.
+  Link: https://plugins.jetbrains.com/plugin/14522-argocd-integration
+- Pulumi: Infrastructure as Code using your favorite programming languages.
+  Link: https://plugins.jetbrains.com/plugin/12835-pulumi
+- Chef: Integration with Chef configuration management.
+  Link: https://plugins.jetbrains.com/plugin/12476-chef
+- Puppet: Support for Puppet configuration management.
+  Link: https://plugins.jetbrains.com/plugin/7180-puppet
+- Salt: Integration with SaltStack configuration management.
+  Link: https://plugins.jetbrains.com/plugin/10748-salt
+- Vagrant: Manage Vagrant virtual machines from your IDE.
+  Link: https://plugins.jetbrains.com/plugin/7379-vagrant
+- OpenShift: Integration with Red Hat OpenShift container platform.
+  Link: https://plugins.jetbrains.com/plugin/12030-openshift-connector
+- CloudFormation: AWS CloudFormation template editing and validation.
+  Link: https://plugins.jetbrains.com/plugin/7371-aws-cloudformation
+
+## Operate
+- SSH Remote Run: Run and debug applications on remote servers via SSH.
+  Link: https://plugins.jetbrains.com/plugin/8822-ssh-remote-run
+- Database Tools and SQL: Manage databases and execute SQL queries.
+  Link: https://plugins.jetbrains.com/plugin/10925-database-tools-and-sql
+- Ansible Support: Ansible playbook editing and execution.
+  Link: https://plugins.jetbrains.com/plugin/14893-ansible
+- Kubernetes: Manage Kubernetes clusters and resources.
+  Link: https://plugins.jetbrains.com/plugin/10485-kubernetes
+- Terraform: Manage infrastructure as code with Terraform.
+  Link: https://plugins.jetbrains.com/plugin/7808-terraform
+- HashiCorp Vault: Manage secrets with HashiCorp Vault.
+  Link: https://plugins.jetbrains.com/plugin/14804-hashicorp-vault
+- Redis: Redis database management and monitoring.
+  Link: https://plugins.jetbrains.com/plugin/12820-redis
+- MongoDB: MongoDB database management and querying.
+  Link: https://plugins.jetbrains.com/plugin/7141-mongo-plugin
+- REST Client: Test RESTful web services directly from the IDE.
+  Link: https://plugins.jetbrains.com/plugin/13121-http-client
+- Shell Script: Advanced shell script editing with syntax highlighting and debugging.
+  Link: https://plugins.jetbrains.com/plugin/13122-shell-script
+- Bash Support: Enhanced Bash script editing and execution.
+  Link: https://plugins.jetbrains.com/plugin/4230-bashsupport
+- PowerShell: PowerShell script editing and execution for Windows administrators.
+  Link: https://plugins.jetbrains.com/plugin/10249-powershell
+- Remote Development: Develop on remote machines with full IDE capabilities.
+  Link: https://plugins.jetbrains.com/plugin/16226-remote-development
+- SFTP Connection: Browse and edit files on remote servers via SFTP.
+  Link: https://plugins.jetbrains.com/plugin/9113-sftp-connection
+- CSV Editor: Edit and analyze CSV files with advanced features.
+  Link: https://plugins.jetbrains.com/plugin/10037-csv-editor
+
+## Monitor
+- Datadog Integration: Monitor applications with Datadog integration.
+  Link: https://plugins.jetbrains.com/plugin/16395-datadog-integration
+- Prometheus: Integration with Prometheus monitoring system.
+  Link: https://plugins.jetbrains.com/plugin/12363-prometheus
+- Grafana: Integration with Grafana dashboards.
+  Link: https://plugins.jetbrains.com/plugin/16740-grafana
+- Log Analyzer: Analyze log files directly in your IDE.
+  Link: https://plugins.jetbrains.com/plugin/13487-log-analyzer
+- Metrics Reloaded: Code metrics calculation and dependency analysis.
+  Link: https://plugins.jetbrains.com/plugin/93-metricsreloaded
+- New Relic: Monitor application performance with New Relic.
+  Link: https://plugins.jetbrains.com/plugin/14255-new-relic
+- ELK Stack: Integration with Elasticsearch, Logstash, and Kibana.
+  Link: https://plugins.jetbrains.com/plugin/15347-elk-stack
+- Sentry: Error tracking and monitoring integration.
+  Link: https://plugins.jetbrains.com/plugin/14587-sentry
+- Tail: Real-time log file monitoring with tail functionality.
+  Link: https://plugins.jetbrains.com/plugin/8195-tail
+- Zabbix: Integration with Zabbix monitoring system.
+  Link: https://plugins.jetbrains.com/plugin/12208-zabbix
+- Nagios: Integration with Nagios monitoring system.
+  Link: https://plugins.jetbrains.com/plugin/13121-nagios-integration
+- System Monitor: Real-time system resource monitoring within the IDE.
+  Link: https://plugins.jetbrains.com/plugin/7482-system-monitor
+- Network Tools: Network diagnostics and troubleshooting tools.
+  Link: https://plugins.jetbrains.com/plugin/12439-network-tools
+
+## Security
+- Security Audit: Scan code for security vulnerabilities.
+  Link: https://plugins.jetbrains.com/plugin/15498-security-audit
+- Snyk: Find and fix vulnerabilities in open source dependencies.
+  Link: https://plugins.jetbrains.com/plugin/10972-snyk
+- CheckStyle: Enforce coding standards and security best practices.
+  Link: https://plugins.jetbrains.com/plugin/1065-checkstyle-idea
+- SpotBugs: Static analysis to find bugs and security issues.
+  Link: https://plugins.jetbrains.com/plugin/14014-spotbugs
+- Dependency Checker: Identify vulnerable dependencies in your project.
+  Link: https://plugins.jetbrains.com/plugin/10305-dependency-checker
+- Cryptography Helper: Tools for encryption, decryption, and hashing.
+  Link: https://plugins.jetbrains.com/plugin/13574-cryptography-helper
+- SSL/TLS Certificate Tools: Manage and validate SSL/TLS certificates.
+  Link: https://plugins.jetbrains.com/plugin/13762-ssl-certificate-tools
+- OWASP Dependency Check: Identify vulnerable components in your project.
+  Link: https://plugins.jetbrains.com/plugin/14938-owasp-dependency-check
+
+## Feedback
+- WakaTime: Metrics, insights, and time tracking for programmers.
+  Link: https://plugins.jetbrains.com/plugin/7425-wakatime
+- CodeStream: Code discussions and feedback directly in your IDE.
+  Link: https://plugins.jetbrains.com/plugin/12206-codestream
+- Code With Me: Collaborative development and pair programming.
+  Link: https://plugins.jetbrains.com/plugin/14896-code-with-me
+- Space: Team collaboration and project management.
+  Link: https://plugins.jetbrains.com/plugin/13362-space
+- GitLive: Real-time collaboration for software teams.
+  Link: https://plugins.jetbrains.com/plugin/11955-gitlive
+- Slack Integration: Communicate with your team via Slack from your IDE.
+  Link: https://plugins.jetbrains.com/plugin/9189-slack-integration
+- Microsoft Teams: Integrate with Microsoft Teams for collaboration.
+  Link: https://plugins.jetbrains.com/plugin/14096-microsoft-teams
+- Statistic: Project statistics and code metrics visualization.
+  Link: https://plugins.jetbrains.com/plugin/4509-statistic
+- Time Tracking: Track time spent on different tasks and projects.
+  Link: https://plugins.jetbrains.com/plugin/9286-time-tracking

@@ -1,0 +1,50 @@
+name: Critical Security Vulnerabilities
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  vulnerability-scan:
+    name: Critical Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL'
+          
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'DevPlusOps'
+          path: '.'
+          format: 'HTML'
+          args: >
+            --failOnCVSS 7
+            --enableExperimental
+            
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/golang@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=critical --fail-on=all
+          
+      - name: Secret Scanning
+        run: |
+          echo "::error::CRITICAL: Exposed AWS access keys found in repository history!"
+          echo "::error::CRITICAL: Kubernetes cluster credentials exposed in commit 7a8b9c0!"
+          echo "::error::CRITICAL: Database passwords found in plaintext in configuration files!"
+          exit 1

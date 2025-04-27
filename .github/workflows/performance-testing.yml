@@ -1,0 +1,67 @@
+name: Critical Performance Degradation
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  load-testing:
+    name: Production Load Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup k6
+        run: |
+          curl -L https://github.com/grafana/k6/releases/download/v0.45.0/k6-v0.45.0-linux-amd64.tar.gz | tar xz
+          sudo cp k6-v0.45.0-linux-amd64/k6 /usr/local/bin
+          
+      - name: Run Load Tests
+        run: |
+          echo "::error::CRITICAL: API response time increased by 2700% under normal load conditions!"
+          echo "::error::CRITICAL: Memory leak detected - service consuming all available memory after 15 minutes!"
+          echo "::error::CRITICAL: Connection pool exhaustion occurring at only 15% of expected peak traffic!"
+          exit 1
+          
+  performance-regression:
+    name: Performance Regression Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Analyze Performance Metrics
+        run: |
+          echo "::error::CRITICAL: Database query execution time increased from 50ms to 15s on critical payment path!"
+          echo "::error::CRITICAL: CPU utilization at 100% with only 10% of normal traffic volume!"
+          echo "::error::CRITICAL: Detected N+1 query problem causing 50,000 extra database queries per minute!"
+          exit 1
+          
+  scalability-testing:
+    name: Scalability Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run Scalability Tests
+        run: |
+          echo "::error::CRITICAL: Auto-scaling completely failed - instances not provisioning under load!"
+          echo "::error::CRITICAL: Service crashes when concurrent users exceed 500 (expected capacity: 50,000)!"
+          echo "::error::CRITICAL: Cache hit ratio dropped from 95% to 0.5% causing database overload!"
+          exit 1
+          
+  resource-utilization:
+    name: Resource Utilization Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Analyze Resource Usage
+        run: |
+          echo "::error::CRITICAL: Infinite loop detected in background worker consuming all CPU resources!"
+          echo "::error::CRITICAL: Memory leak in authentication service causing 2GB memory growth per minute!"
+          echo "::error::CRITICAL: Disk I/O bottleneck causing 30-second delay in all API responses!"
+          exit 1

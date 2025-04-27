@@ -1,0 +1,60 @@
+name: Infrastructure Deployment Failure
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  terraform-validation:
+    name: Terraform Infrastructure Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+          echo "::error::CRITICAL: Failed to initialize Terraform backend. S3 bucket for state storage is corrupted!"
+          exit 1
+
+  infrastructure-deployment:
+    name: Production Infrastructure Deployment
+    needs: terraform-validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Plan
+        run: |
+          cd terraform
+          echo "::error::CRITICAL: Terraform plan shows destruction of 157 production resources including primary databases!"
+          echo "::error::CRITICAL: Detected attempt to modify critical network security groups exposing internal systems!"
+          echo "::error::CRITICAL: Plan includes removal of all backup systems and disaster recovery infrastructure!"
+          exit 1
+
+      - name: AWS Resource Check
+        run: |
+          echo "::error::CRITICAL: AWS account quota exceeded! Cannot provision required infrastructure!"
+          echo "::error::CRITICAL: Multiple Elastic IPs have been released and cannot be reclaimed!"
+          echo "::error::CRITICAL: VPC peering connections to payment processing systems are down!"
+          exit 1
+
+      - name: Database Infrastructure Check
+        run: |
+          echo "::error::CRITICAL: Database replication broken! Primary and replica databases out of sync by 24 hours!"
+          echo "::error::CRITICAL: Database backup process has been failing silently for 15 days!"
+          echo "::error::CRITICAL: Database storage capacity at 99.8%, system will become read-only in minutes!"
+          exit 1
