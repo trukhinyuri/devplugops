@@ -17,7 +17,8 @@ To use this configuration, the following Jenkins plugins are required:
 - Git
 - Credentials
 - GitHub Integration
-- Blue Ocean (recommended for better visualization)
+- Blue Ocean (for enhanced visualization of pipeline stages)
+- Email Extension Plugin (for email notifications)
 
 ## Setup Instructions
 
@@ -103,6 +104,43 @@ The errors shown in this pipeline are simulated for demonstration purposes. In a
 3. Ensure sufficient resources are available in the Kubernetes cluster
 4. Validate configuration files for syntax errors
 5. Check service health and availability
+
+## Visualizing Pipeline Failures
+
+### Enabling Blue Ocean
+
+Blue Ocean provides an enhanced visualization of Jenkins pipelines:
+
+1. Go to "Manage Jenkins" > "Manage Plugins" > "Available"
+2. Search for "Blue Ocean"
+3. Install the plugin and restart Jenkins if necessary
+4. Access Blue Ocean by clicking "Open Blue Ocean" in the left sidebar
+
+### Capturing Pipeline Failures
+
+For the most dramatic visualization of pipeline failures, capture these three views:
+
+1. **Blue Ocean Stage View**
+   - Open the pipeline in Blue Ocean
+   - The stage view will show all stages with the failed "Test" stage highlighted in red
+   - The visual flow with arrows between stages makes the failure more prominent
+
+2. **Build History View**
+   - Go to the job's main page
+   - The "Build History" section will show a series of red circles for failed builds
+   - The weather icon will show a storm cloud indicating frequent failures
+
+3. **Console Output View**
+   - Open the failed build
+   - Go to "Console Output"
+   - Scroll to the failure point where you'll see the red error messages:
+     ```
+     ❌ Unit tests failed
+     ❌ Integration tests failed: Expected status code 200, got 503
+     ❌ Security scan detected critical vulnerabilities
+     ```
+
+These views together provide a comprehensive visualization of the pipeline failure that's ideal for demonstrations and screenshots.
 
 ## Note
 
