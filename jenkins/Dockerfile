@@ -10,4 +10,16 @@ RUN apt-get update && \
     apt-get update && \
     apt-get -y install docker-ce-cli
 
+# Install Go
+RUN apt-get update && \
+    apt-get -y install wget && \
+    wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz && \
+    rm go1.20.5.linux-amd64.tar.gz && \
+    echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile && \
+    echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/bash.bashrc
+
+# Add Go to PATH for all users
+ENV PATH=$PATH:/usr/local/go/bin
+
 USER jenkins
