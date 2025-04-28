@@ -121,13 +121,40 @@ try {
     logger.warning("Failed to configure Kubernetes cloud: ${e.message}")
 }
 
+// Install Blue Ocean plugin for enhanced pipeline visualization
+logger.info("Installing Blue Ocean plugin for enhanced pipeline visualization")
+try {
+    def pm = Jenkins.instance.pluginManager
+    def uc = Jenkins.instance.updateCenter
+
+    // Check if Blue Ocean plugin is already installed
+    if (!pm.getPlugin("blueocean")) {
+        // Update the update center
+        uc.updateAllSites()
+
+        // Install Blue Ocean plugin
+        def plugin = uc.getPlugin("blueocean")
+        if (plugin) {
+            def installFuture = plugin.deploy()
+            installFuture.get()
+            logger.info("Blue Ocean plugin installed successfully")
+        } else {
+            logger.warning("Blue Ocean plugin not found in update center")
+        }
+    } else {
+        logger.info("Blue Ocean plugin is already installed")
+    }
+} catch (Exception e) {
+    logger.warning("Failed to install Blue Ocean plugin: ${e.message}")
+}
+
 // Load job from XML
 try {
     logger.info("Creating pipeline job")
     def jobName = "production-infrastructure-pipeline"
     def jobXml = new File("/var/jenkins_home/job-config.xml").text
     def xmlStream = new ByteArrayInputStream(jobXml.getBytes())
-    
+
     def jobInstance = Jenkins.instance.createProjectFromXML(jobName, xmlStream)
     jobInstance.save()
     logger.info("Job '${jobName}' created successfully")
