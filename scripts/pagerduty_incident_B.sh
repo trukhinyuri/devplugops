@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Source the colors utility
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/colors.sh"
+# Source the colors utility
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/colors.sh"
+
+print_yellow "[PagerDuty] Incident #P-789012 - $(date '+%Y-%m-%d %H:%M:%S')"
+print_error "SEV-1 incident triggered: ServiceAvailabilityLow"
+print_yellow "Service: user-authentication-service"
+print_yellow "Environment: production"
+print_yellow "Region: eu-west-2"
+print_detail "Alert details:"
+print_detail "  - Threshold: Error rate > 10% for 3 minutes"
+print_detail "  - Current value: 23.7%"
+print_detail "  - Started at: $(date -v-3M '+%Y-%m-%d %H:%M:%S')"
+print_detail "  - Affected endpoints: /auth/login, /auth/refresh-token, /auth/validate"
+print_detail "  - Impact: Users unable to log in or maintain sessions"
+print_detail "  - Error codes: HTTP 500 (78%), HTTP 503 (22%)"
+print_yellow "Assigned to: security-oncall@example.com"
+print_yellow "Escalation policy: auth-team-escalation"
+print_yellow "Runbook: https://runbooks.example.com/auth-service/high-error-rate"
+print_yellow "Dashboard: https://grafana.example.com/d/auth-service-overview"
+print_yellow "Conference bridge: https://meet.example.com/incident-789012"

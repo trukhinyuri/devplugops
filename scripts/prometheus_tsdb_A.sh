@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Source the colors utility
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/colors.sh"
+
+print_yellow "[Prometheus] Instance: prometheus-main-0 (pod/prometheus-main-0 in monitoring namespace)"
+print_yellow "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')"
+print_error "Error: opening storage failed: corruption detected"
+print_yellow "TSDB path: /prometheus/data"
+print_detail "ts=2024-04-28T08:15:42.123Z caller=main.go:1045 level=error msg=\"Opening storage failed\" err=\"corruption detected: block 01HZXG2JKPQ8F3Y5TVRM6N7D8: invalid checksum\""
+print_detail "ts=2024-04-28T08:15:42.234Z caller=main.go:1047 level=error msg=\"Retrying storage open with repair attempt\" attempt=1/3"
+print_detail "ts=2024-04-28T08:15:45.345Z caller=main.go:1060 level=error msg=\"Storage repair attempt failed\" err=\"block 01HZXG2JKPQ8F3Y5TVRM6N7D8: cannot repair corrupted block\""
+print_detail "ts=2024-04-28T08:15:45.456Z caller=main.go:1047 level=error msg=\"Retrying storage open with repair attempt\" attempt=2/3"
+print_detail "ts=2024-04-28T08:15:48.567Z caller=main.go:1060 level=error msg=\"Storage repair attempt failed\" err=\"block 01HZXG2JKPQ8F3Y5TVRM6N7D8: cannot repair corrupted block\""
+print_detail "ts=2024-04-28T08:15:48.678Z caller=main.go:1047 level=error msg=\"Retrying storage open with repair attempt\" attempt=3/3"
+print_detail "ts=2024-04-28T08:15:51.789Z caller=main.go:1060 level=error msg=\"Storage repair attempt failed\" err=\"block 01HZXG2JKPQ8F3Y5TVRM6N7D8: cannot repair corrupted block\""
+print_detail "ts=2024-04-28T08:15:51.890Z caller=main.go:1065 level=error msg=\"Prometheus server failed to start\" err=\"corruption detected: block 01HZXG2JKPQ8F3Y5TVRM6N7D8: invalid checksum\""
+print_yellow "Impact: Metrics collection and alerting disrupted. Historical data from 2024-04-25 to 2024-04-28 may be unavailable."
+print_yellow "Recommendation: Delete corrupted block and restore from backup if available."
+print_yellow "Runbook: https://runbooks.example.com/prometheus/tsdb-corruption"

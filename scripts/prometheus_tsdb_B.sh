@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Source the colors utility
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/colors.sh"
+
+print_yellow "[Prometheus] Instance: prometheus-replica-2 (pod/prometheus-replica-2 in observability namespace)"
+print_yellow "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')"
+print_error "Error: opening storage failed: corruption detected"
+print_yellow "TSDB path: /data/prometheus"
+print_detail "ts=2024-04-28T10:23:15.456Z caller=db.go:873 level=error component=tsdb msg=\"WAL corruption detected\" err=\"segment 000042: header mismatch: magic number 0x87654321, expected 0x12345678\""
+print_detail "ts=2024-04-28T10:23:15.567Z caller=db.go:875 level=error component=tsdb msg=\"Attempting WAL repair\""
+print_detail "ts=2024-04-28T10:23:17.678Z caller=db.go:890 level=error component=tsdb msg=\"WAL repair failed\" err=\"segment 000042: cannot recover corrupted WAL segment\""
+print_detail "ts=2024-04-28T10:23:17.789Z caller=db.go:892 level=error component=tsdb msg=\"Attempting to start with truncated WAL\""
+print_detail "ts=2024-04-28T10:23:19.890Z caller=db.go:910 level=error component=tsdb msg=\"Truncated WAL start failed\" err=\"index out of sync with WAL: 423 samples missing\""
+print_detail "ts=2024-04-28T10:23:19.901Z caller=db.go:915 level=error component=tsdb msg=\"Checking for on-disk corruption\""
+print_detail "ts=2024-04-28T10:23:22.012Z caller=db.go:930 level=error component=tsdb msg=\"On-disk corruption found\" block=01HZY7D8F9G0H1J2K3L4M5N6P err=\"block 01HZY7D8F9G0H1J2K3L4M5N6P: index.json.gz: unexpected EOF\""
+print_detail "ts=2024-04-28T10:23:22.123Z caller=main.go:156 level=error msg=\"Prometheus server failed to start\" err=\"corruption detected: WAL and on-disk data corrupted\""
+print_yellow "Impact: Metrics collection and alerting disrupted for production services. Data loss for the last 6 hours."
+print_yellow "Recommendation: Delete corrupted WAL segments and blocks, then restore from backup."
+print_yellow "Runbook: https://runbooks.example.com/prometheus/tsdb-corruption"
+print_yellow "Incident ID: INC-20240428-003"
