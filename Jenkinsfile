@@ -8,6 +8,12 @@ pipeline {
         }
 
         stage('Build') {
+            agent {
+                docker {
+                    image 'golang:1.22-alpine'
+                    reuseNode true
+                }
+            }
             steps { 
                 sh 'go vet ./...'
                 sh 'go build ./...'
@@ -15,9 +21,17 @@ pipeline {
         }
 
         stage('Test') {                // ← намеренно урони́м
+            agent {
+                docker {
+                    image 'golang:1.22-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 // запускаем тесты и пишем JUnit-XML
                 sh '''
+                    apk add --no-cache git
+                    go install github.com/jstemmer/go-junit-report/v2@latest
                     go test ./... -v 2>&1 | go-junit-report > report.xml
                     # имитируем падение
                     echo "force fail" && exit 1
@@ -32,6 +46,12 @@ pipeline {
 
         stage('Package') {
             when { expression { currentBuild.currentResult == 'SUCCESS' } }
+            agent {
+                docker {
+                    image 'golang:1.22-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 sh 'tar -czf build.tgz cmd/ internal/'
             }

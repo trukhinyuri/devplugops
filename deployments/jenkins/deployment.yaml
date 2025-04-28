@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: jenkins/jenkins:lts
+        image: custom-jenkins:latest
         ports:
         - containerPort: 8080
           name: web
@@ -48,10 +48,16 @@ spec:
         volumeMounts:
         - name: jenkins-data
           mountPath: /var/jenkins_home
+        - name: docker-socket
+          mountPath: /var/run/docker.sock
       volumes:
       - name: jenkins-data
         persistentVolumeClaim:
           claimName: jenkins-data
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket
 ---
 apiVersion: v1
 kind: Service

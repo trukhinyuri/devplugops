@@ -20,6 +20,25 @@ To use this configuration, the following Jenkins plugins are required:
 - Blue Ocean (for enhanced visualization of pipeline stages)
 - Email Extension Plugin (for email notifications)
 
+## Custom Jenkins Image
+
+This repository includes a custom Jenkins Docker image that extends the official Jenkins LTS image with additional tools:
+
+- Docker CLI: Allows Jenkins to run Docker commands and use Docker pipeline agents
+
+### Building the Custom Jenkins Image
+
+To build the custom Jenkins image:
+
+```bash
+cd jenkins
+docker build -t custom-jenkins:latest .
+```
+
+### Using the Custom Jenkins Image
+
+The deployment configuration in `deployments/jenkins/deployment.yaml` is set to use this custom image. Make sure to build and push the image to your container registry before deploying Jenkins.
+
 ## Setup Instructions
 
 ### 1. Install Required Plugins
