@@ -33,8 +33,6 @@ pipeline {
                     apk add --no-cache git
                     go install github.com/jstemmer/go-junit-report/v2@latest
                     go test ./... -v 2>&1 | go-junit-report > report.xml
-                    # имитируем падение
-                    echo "force fail" && exit 1
                 '''
             }
             post {
