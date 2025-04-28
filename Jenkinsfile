@@ -1161,6 +1161,8 @@ EOF
     post {
         always {
             echo "Pipeline execution completed"
+            junit 'test-results/**/*.xml, **/target/failsafe-reports/*.xml'
+            archiveArtifacts artifacts: "${ARTIFACT_PATH}/**/*", fingerprint: true
             cleanWs()
         }
 
