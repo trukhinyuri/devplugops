@@ -8,12 +8,7 @@ pipeline {
         }
 
         stage('Build') {
-            agent {
-                docker {
-                    image 'golang:1.22-alpine'
-                    reuseNode true
-                }
-            }
+            agent any
             steps { 
                 sh 'go vet ./...'
                 sh 'go build ./...'
@@ -21,16 +16,12 @@ pipeline {
         }
 
         stage('Test') {                // ← намеренно урони́м
-            agent {
-                docker {
-                    image 'golang:1.22-alpine'
-                    reuseNode true
-                }
-            }
+            agent any
             steps {
                 // запускаем тесты и пишем JUnit-XML
                 sh '''
-                    apk add --no-cache git
+                    # Note: Removed apk command as it's Alpine-specific
+                    # Ensure git is installed on the Jenkins agent
                     go install github.com/jstemmer/go-junit-report/v2@latest
                     go test ./... -v 2>&1 | go-junit-report > report.xml
                 '''
@@ -44,12 +35,7 @@ pipeline {
 
         stage('Package') {
             when { expression { currentBuild.currentResult == 'SUCCESS' } }
-            agent {
-                docker {
-                    image 'golang:1.22-alpine'
-                    reuseNode true
-                }
-            }
+            agent any
             steps {
                 sh 'tar -czf build.tgz cmd/ internal/'
             }
